@@ -12,8 +12,8 @@ function loadExtras(scene) {
     const mtlLoader = new THREE.MTLLoader();
     const objLoader = new THREE.OBJLoader();
 
-    mtlLoader.setPath("assets/models/snowman/House/");
-    objLoader.setPath("assets/models/snowman/House/");
+mtlLoader.setPath("assets/models/snowman/House/");
+objLoader.setPath("assets/models/snowman/House/");
 
     mtlLoader.load("materials.mtl", (materials) => {
         materials.preload();
@@ -31,8 +31,9 @@ function loadExtras(scene) {
     const mtlLoader2 = new THREE.MTLLoader();
     const objLoader2 = new THREE.OBJLoader();
 
-    mtlLoader2.setPath("assets/models/snowman/christmas tree/");
-    objLoader2.setPath("assets/models/snowman/christmas tree/");
+mtlLoader2.setPath("assets/models/snowman/christmas tree/");
+objLoader2.setPath("assets/models/snowman/christmas tree/");
+
 
     mtlLoader2.load("materials.mtl", (materials) => {
         materials.preload();

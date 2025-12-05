@@ -26,7 +26,8 @@ function startExtras(scene) {
   const mtlLoader = new THREE.MTLLoader();
   const objLoader = new THREE.OBJLoader();
 
-  mtlLoader.setPath("assets/models/snowman/House/");
+mtlLoader.setPath("assets/models/snowman/House/");
+objLoader.setPath("assets/models/snowman/House/");
   mtlLoader.load("materials.mtl",
     (materials) => {
       materials.preload();
@@ -50,7 +51,8 @@ function startExtras(scene) {
   const mtlLoader2 = new THREE.MTLLoader();
   const objLoader2 = new THREE.OBJLoader();
 
-  mtlLoader2.setPath("assets/models/snowman/christmas tree/");
+mtlLoader2.setPath("assets/models/snowman/christmas tree/");
+objLoader2.setPath("assets/models/snowman/christmas tree/");
   mtlLoader2.load("materials.mtl",
     (materials) => {
       materials.preload();
@@ -71,7 +73,7 @@ function startExtras(scene) {
   );
 
   // Music
-  const music = new Audio("assets/models/snowman/jingle.mp3");
+  const music = new Audio("docs/jingle.mp3");
   music.loop = true;
   music.volume = 0.8;
   music.play().catch(e => {
