@@ -22,64 +22,61 @@
 })();
 
 function startExtras(scene) {
-  // HOUSE (OBJ + MTL)
-  const mtlLoader = new THREE.MTLLoader();
-  const objLoader = new THREE.OBJLoader();
+ /* ======== HOUSE ========= */
+const mtlLoader = new THREE.MTLLoader();
+const objLoader = new THREE.OBJLoader();
 
 mtlLoader.setPath("assets/models/snowman/House/");
 objLoader.setPath("assets/models/snowman/House/");
-  mtlLoader.load("materials.mtl",
-    (materials) => {
-      materials.preload();
-      objLoader.setMaterials(materials);
 
-      objLoader.setPath("assets/models/snowman/House/");
-      objLoader.load("model.obj", (object) => {
-        object.position.set(0, 0, 0);
-        object.scale.set(3, 3, 3);
-        scene.add(object);
-        console.log("🏠 Nhà đã load");
-      }, undefined, (err) => {
-        console.error("Lỗi load house.obj:", err);
-      });
-    },
-    undefined,
-    (err) => console.error("Lỗi load house.mtl:", err)
-  );
+mtlLoader.load("materials.mtl", (materials) => {
+    materials.preload();
+    objLoader.setMaterials(materials);
 
-  // CHRISTMAS TREE (OBJ + MTL)
-  const mtlLoader2 = new THREE.MTLLoader();
-  const objLoader2 = new THREE.OBJLoader();
+    objLoader.load("model.obj", (house) => {
+        house.scale.set(4, 4, 4);
+        house.position.set(-5, 0, -5);
+        house.rotation.y = Math.PI / 3;
+
+        scene.add(house);
+        console.log("🏠 House loaded!");
+    });
+});
+
+
+ /* ======== CHRISTMAS TREE ========= */
+const mtlLoader2 = new THREE.MTLLoader();
+const objLoader2 = new THREE.OBJLoader();
 
 mtlLoader2.setPath("assets/models/snowman/christmas tree/");
 objLoader2.setPath("assets/models/snowman/christmas tree/");
-  mtlLoader2.load("materials.mtl",
-    (materials) => {
-      materials.preload();
-      objLoader2.setMaterials(materials);
 
-      objLoader2.setPath("assets/models/snowman/christmas tree/");
-      objLoader2.load("model.obj", (object) => {
-        object.position.set(5, 0, -2);
-        object.scale.set(1.5, 1.5, 1.5);
-        scene.add(object);
-        console.log("🎄 Cây thông đã load");
-      }, undefined, (err) => {
-        console.error("Lỗi load tree.obj:", err);
-      });
-    },
-    undefined,
-    (err) => console.error("Lỗi load tree.mtl:", err)
-  );
+mtlLoader2.load("materials.mtl", (materials) => {
+    materials.preload();
+    objLoader2.setMaterials(materials);
+
+    objLoader2.load("model.obj", (tree) => {
+        tree.scale.set(2, 2, 2);
+        tree.position.set(6, 0, -3);
+        tree.rotation.y = Math.PI / 4;
+
+        scene.add(tree);
+        console.log("🎄 Tree loaded!");
+    });
+});
+
 
   // Music
-  const music = new Audio("docs/jingle.mp3");
-  music.loop = true;
-  music.volume = 0.8;
-  music.play().catch(e => {
-    // Autoplay may be blocked — that's normal in browsers, so do not crash
-    console.warn("Autoplay blocked:", e);
-  });
+// Music — dùng đường dẫn relative so với index.html (trong docs/)
+
+const music = new Audio("jingle.mp3");   // <--- sửa ở đây: bỏ "docs/"
+music.loop = true;
+music.volume = 0.8;
+// không gọi play() tự động nếu trình duyệt chặn autoplay; you can call music.play() khi người dùng bấm nút
+music.play().catch(e => {
+  console.warn("Autoplay blocked — người dùng cần bấm nút để bật nhạc:", e);
+});
+document.getElementById('bgm').play().catch(()=>{/* show message */});
 
   // Snow texture (example)
   const texLoader = new THREE.TextureLoader();
