@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
+/* full screen canvas */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:#00111a;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;}
+
+#canvas3d{position:fixed;inset:0;display:block}
+
+/* UI */
+#ui{
+  position:fixed;right:16px;top:16px;display:flex;flex-direction:column;gap:8px;z-index:30;
+}
+#ui button{
+  background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.06);
+  padding:8px 12px;border-radius:8px;cursor:pointer;font-size:14px;
+  backdrop-filter: blur(6px);
+}
+#ui button:hover{transform:translateY(-2px);transition:all .15s ease}
+#ui button:active{transform:translateY(0);transition:all .05s ease}
+/*# sourceMappingURL=main.css.map*/
